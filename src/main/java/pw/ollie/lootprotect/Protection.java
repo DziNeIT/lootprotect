@@ -1,4 +1,4 @@
-package com.github.dzineit.lootprotect;
+package pw.ollie.lootprotect;
 
 import java.util.UUID;
 
