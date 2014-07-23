@@ -1,6 +1,6 @@
 name: LootProtect
 version: 1.0
-main: com.github.dzineit.lootprotect.LootProtect
+main: pw.ollie.lootprotect.LootProtect
 permissions:
     lootprotect.protect:
         description: Allows usage of the plugin
