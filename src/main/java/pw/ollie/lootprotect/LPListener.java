@@ -19,7 +19,7 @@ import org.bukkit.event.player.PlayerPickupItemEvent;
 import org.bukkit.inventory.ItemStack;
 
 public final class LPListener implements Listener {
-	private final List<Protection> protections = new ArrayList<>();;
+	private final List<Protection> protections = new ArrayList<>();
 	private final long protectionLengthMillis;
 
 	LPListener(final LootProtect plugin) {
