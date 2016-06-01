@@ -21,10 +21,12 @@ import org.bukkit.inventory.ItemStack;
 public final class LPListener implements Listener {
     private final List<Protection> protections = new ArrayList<>();
     private final long protectionLengthMillis;
+    private final boolean sendMessages;
 
     LPListener(LootProtect plugin) {
         FileConfiguration config = plugin.getConfig();
-        protectionLengthMillis = config.getInt("protection-length", 3) * 1000;
+        protectionLengthMillis = config.getInt("protection-length", 10) * 1000;
+        sendMessages = config.getBoolean("send-messages", false);
     }
 
     @EventHandler(priority = EventPriority.MONITOR)
@@ -44,8 +46,10 @@ public final class LPListener implements Listener {
                         Protection prot = new Protection(stack, killerId, System.currentTimeMillis(), protectionLengthMillis);
                         protections.add(prot);
                     }
-                    playerKiller.sendMessage(ChatColor.GRAY + "[LootProtect] Your loot is protected!");
-                } else {
+                    if (this.sendMessages) {
+                        playerKiller.sendMessage(ChatColor.GRAY + "[LootProtect] Your loot is protected!");
+                    }
+                } else if (this.sendMessages) {
                     playerKiller.sendMessage(ChatColor.GRAY + "[LootProtect] Your loot isn't protected!");
                 }
             }
